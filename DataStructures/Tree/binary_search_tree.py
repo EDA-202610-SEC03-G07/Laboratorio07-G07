@@ -23,7 +23,7 @@ def put(bst, key, value):
     return bst
 
 def size(bst):
-    return size_tree(bts["root"])
+    return size_tree(bst["root"])
 
 def size_tree(my_node):
     if my_node is None:
