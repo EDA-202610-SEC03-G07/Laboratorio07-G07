@@ -81,6 +81,8 @@ def get_node(root, key):
         return root
 
 def size(my_bst):
+    if my_bst is None:
+        return 0    
     return size_tree(my_bst["root"])
 
 def size_tree(my_node):
@@ -166,7 +168,7 @@ def value_set_tree(root):
         result.append(left[i])
         i += 1
     result.append(bst.get_value(root))
-    right = value_set_tree(root.get("right"))
+    right = value_set_tree(root["right"])
     j = 0
     while j < len(right):
         result.append(right[j])
@@ -228,7 +230,6 @@ def delete_min(my_bst):
         return None
     my_bst["root"] = delete_min_tree(my_bst["root"])
     return my_bst
-
 
 def delete_max(my_bst):
     """
@@ -386,7 +387,7 @@ def remove_node(root,key):
          # Nodo con dos hijos
         temp = root
         root = min_node(temp["right"])
-        root["right"] = delete_min(temp["right"])
+        root["right"] = delete_min_tree(temp["right"])
         root["left"] = temp["left"]
 
     root["size"] = 1 + size_tree(root["left"]) + size_tree(root["right"])
